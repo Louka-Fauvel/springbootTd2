@@ -1,0 +1,12 @@
+2022-09-19 14:23:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "create table [*]group (id integer not null, aliases varchar(255), email varchar(255), name varchar(60), primary key (id))"; attendu "identifier"
+Syntax error in SQL statement "create table [*]group (id integer not null, aliases varchar(255), email varchar(255), name varchar(60), primary key (id))"; expected "identifier"; SQL statement:
+create table group (id integer not null, aliases varchar(255), email varchar(255), name varchar(60), primary key (id)) [42001-214]
+2022-09-19 14:23:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "alter table user_group add constraint FKn29c890jrd7eyc7yd9lgsrfok foreign key (groups_id) references [*]group"; attendu "identifier"
+Syntax error in SQL statement "alter table user_group add constraint FKn29c890jrd7eyc7yd9lgsrfok foreign key (groups_id) references [*]group"; expected "identifier"; SQL statement:
+alter table user_group add constraint FKn29c890jrd7eyc7yd9lgsrfok foreign key (groups_id) references group [42001-214]
+2022-09-19 14:33:07 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "user""organization" non trouvée
+Table "user""organization" not found; SQL statement:
+SELECT * FROM "user""organization" [42102-214]

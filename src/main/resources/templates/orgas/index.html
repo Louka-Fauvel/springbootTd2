@@ -1,0 +1,25 @@
+{{> /partials/header }}
+<h1>Organisations</h1>
+
+<table class="ui celled table">
+	<thead>
+   		<tr>
+    		<th>Nom</th>
+    		<th>Domain</th>
+    		<th>Aliases</th>
+    		<th>Utilisateurs</th>
+		</tr>
+	</thead>
+  	<tbody>
+  		{{#orgas}}
+    	<tr>
+      		<td>{{name}}</td>
+      		<td>Engineer</td>
+      		<td>Engineer</td>
+      		<td>Engineer</td>
+    	</tr>
+    	{{/orgas}}
+  	</tbody>
+</table>
+
+{{> /partials/footer }}

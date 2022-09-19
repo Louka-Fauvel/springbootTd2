@@ -1,0 +1,31 @@
+{{> /partials/header }}
+<h1>Utilisateurs</h1>
+
+<table class="ui celled table">
+	<thead>
+   		<tr>
+    		<th>Prénom</th>
+    		<th>Nom</th>
+    		<th>Email</th>
+    		<th>Mot de passe</th>
+    		<th>Suspended</th>
+    		<th>Organisation</th>
+    		<th>Groupe(s)</th>
+		</tr>
+	</thead>
+  	<tbody>
+  		{{#users}}
+    	<tr>
+      		<td>{{firstname}}</td>
+      		<td>{{lastname}}</td>
+      		<td>Engineer</td>
+      		<td>Engineer</td>
+      		<td>{{suspended}}</td>
+      		<td>Engineer</td>
+      		<td>Engineer</td>
+    	</tr>
+    	{{/users}}
+  	</tbody>
+</table>
+
+{{> /partials/footer }}

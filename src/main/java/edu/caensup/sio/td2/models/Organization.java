@@ -17,12 +17,12 @@ public class Organization {
 	private int id;
 	
 	@Column(length = 60)
-	private String name;
+	private String name = "";
 	
 	@Column(length = 20)
-	private String domain;
+	private String domain = "";
 	
-	private String aliases;
+	private String aliases = "";
 	
 	@OneToMany(mappedBy = "organization")
 	private List<User> users;

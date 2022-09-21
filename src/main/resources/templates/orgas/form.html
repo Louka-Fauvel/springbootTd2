@@ -1,0 +1,34 @@
+{{> /partials/header }}
+
+<h1>Organisations</h1>
+
+<a href="/orgas/index" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+
+{{#orga}}
+<form class="ui form" method="post" action="/orgas/new">
+
+  <div class="field">
+    <label>Nom</label>
+    <input type="text" name="name" placeholder="Nom" value="{{name}}" required>
+  </div>
+  
+  <div class="field">
+    <label>Aliases</label>
+    <input type="text" name="aliases" placeholder="Aliases" value="{{aliases}}" required>
+  </div>
+  
+  <div class="field">
+    <label>Domain</label>
+    <input type="text" name="domain" placeholder="Domain" value="{{domain}}" required>
+  </div>
+  
+  <input type="hidden" name="id" value="{{id}}">
+  
+  <button class="ui button" type="submit">Valider</button>
+  
+</form>
+{{/orga}}
+
+{{> /partials/footer }}

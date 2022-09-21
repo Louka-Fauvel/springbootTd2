@@ -10,3 +10,7 @@ alter table user_group add constraint FKn29c890jrd7eyc7yd9lgsrfok foreign key (g
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "user""organization" non trouvée
 Table "user""organization" not found; SQL statement:
 SELECT * FROM "user""organization" [42102-214]
+2022-09-21 08:50:08 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "user""organization" non trouvée
+Table "user""organization" not found; SQL statement:
+SELECT * FROM "user""organization" [42102-214]

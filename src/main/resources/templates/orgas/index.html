@@ -1,6 +1,11 @@
 {{> /partials/header }}
 <h1>Organisations</h1>
 
+<a href="/" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+<a href="/orgas/new" class="ui labeled icon green button"><i class="plus icon"></i>Ajouter une organisation</a>
+
 <table class="ui celled table">
 	<thead>
    		<tr>
@@ -8,18 +13,71 @@
     		<th>Domain</th>
     		<th>Aliases</th>
     		<th>Utilisateurs</th>
+    		<th></th>
 		</tr>
 	</thead>
   	<tbody>
   		{{#orgas}}
     	<tr>
       		<td>{{name}}</td>
-      		<td>Engineer</td>
-      		<td>Engineer</td>
-      		<td>Engineer</td>
+      		<td>{{domain}}</td>
+      		<td>{{aliases}}</td>
+      		<td>
+      			<ul style="list-style-type: none;">
+      			{{#users}}
+					<li>{{firstname}} {{lastname}}</li>
+      			{{/users}}
+      			</ul>
+      		</td>
+      		<td>
+      			<a href="/orgas" class="circular ui icon button">
+      				<i class="eye icon"></i>
+      			</a>
+      			
+      			<a href="/orgas/edit/{{id}}" class="circular ui blue icon button">
+      				<i class="ui edit icon"></i>
+      			</a>
+      			
+      			<a href="/orgas/delete/{{id}}#delete-message" class="circular ui red icon button">
+      				<i class="ui trash icon"></i>
+      			</a>
+   			</td>
     	</tr>
     	{{/orgas}}
   	</tbody>
+  	<tfoot>
+  		<tr>
+  			<td>
+  				<div class="">
+  					<form class="ui form" action="">
+  						<div class="ui search">
+							<div class="ui icon input">
+   								<input class="prompt" type="text" placeholder="Common passwords...">
+   								<i class="search icon"></i>
+							</div>
+							<div class="results"></div>
+						</div>
+  					</form>
+				</div>
+				
+  			</td>
+  		</tr>
+  	</tfoot>
 </table>
+
+{{#msg}}
+<div class="ui {{type}} icon message" id="delete-message">
+  <i class="{{icon}} icon"></i>
+  <div class="content">
+    <div class="header">{{title}}</div>
+    <p>{{content}}</p>
+    <p>
+    {{#links}}
+    	<a class="ui button" href="{{href}}">{{libelle}}</a> 
+    {{/links}}
+    </p>
+  </div>
+</div>
+{{/msg}}
 
 {{> /partials/footer }}

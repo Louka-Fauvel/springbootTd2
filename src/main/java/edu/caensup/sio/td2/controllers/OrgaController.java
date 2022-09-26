@@ -77,4 +77,13 @@ public class OrgaController {
 		orgarepo.findById(id).ifPresent(orga -> model.put("orga", orga));
 		return "/orgas/form";
 	}
+	
+	@PostMapping("/search")
+	public String searchAction(ModelMap model, @ModelAttribute Organization orga) {
+		
+		Iterable<Organization> organizations = orgarepo.findByNameContaining(orga.getName());
+		model.put("orgas", organizations);
+		return "/orgas/index";
+		
+	}
 }

@@ -83,7 +83,7 @@ public class UIMessage {
 	}
 	
 	public static UIMessage errorConfirmation(String title, String content, String okURL, String cancelURL) {
-		return error(title, content).addLinks(new UILink("Oui", "okURL"), new UILink("Non", "cancelURL"));
+		return error(title, content).addLinks(new UILink("Oui", okURL), new UILink("Non", cancelURL));
 	}
 	
 }

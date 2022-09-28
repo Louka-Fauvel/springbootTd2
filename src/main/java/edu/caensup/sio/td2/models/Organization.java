@@ -26,6 +26,9 @@ public class Organization {
 	
 	@OneToMany(mappedBy = "organization")
 	private List<User> users;
+	
+	@OneToMany(mappedBy = "organization")
+	private List<Group> groups;
 
 	public int getId() {
 		return id;
@@ -66,4 +69,13 @@ public class Organization {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
+	public List<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
+	}
+	
 }

@@ -78,6 +78,14 @@ public class OrgaController {
 		return "/orgas/form";
 	}
 	
+	@GetMapping("/display/{id}")
+	public String displayAction(ModelMap model, @PathVariable int id) {
+		
+		orgarepo.findById(id).ifPresent(orga -> model.put("orga", orga));
+		return "/orgas/display";
+		
+	}
+	
 	@PostMapping("/search")
 	public String searchAction(ModelMap model, @ModelAttribute Organization orga) {
 		

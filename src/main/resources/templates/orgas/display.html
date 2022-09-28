@@ -1,0 +1,69 @@
+{{> /partials/header }}
+<h1>Organisations</h1>
+
+<a href="/orgas/index" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+<a href="/orgas/new" class="ui labeled icon green button"><i class="plus icon"></i>Ajouter une organisation</a>
+{{#orga}}
+<br><br>
+<a href="/orgas/delete/{{id}}#delete-message" class="ui labeled icon red button"><i class="trash icon"></i>Supprimer l'organisation {{name}}</a>
+<a href="/orgas/edit/{{id}}" class="ui labeled icon blue button"><i class="edit icon"></i>Modifier l'organisation {{name}}</a>
+<table class="ui celled table">
+  	<tbody>
+  	
+  	<tr>
+  	
+  		<td>Id</td>
+  		<td>{{id}}</td>
+  		
+  	</tr>
+  	<tr>
+  	
+  		<td>Name</td>
+  		<td>{{name}}</td>
+  		
+	</tr>
+  	<tr>
+  	
+  		<td>Domain</td>
+  		<td>{{domain}}</td>
+  		
+  	</tr>
+  	<tr>
+  	
+  		<td>Aliases</td>
+  		<td>{{aliases}}</td>
+  		
+  	</tr>
+  	<tr>
+  	
+  		<td>Groupes</td>
+  		<td>
+  			{{#groups}}
+  				<li style="list-style-type: none;">{{name}}</li>
+  			{{/groups}}
+  		</td>
+  		
+  	</tr>
+  	<tr>
+  	
+  		<td>Organizationsetting</td>
+  		<td></td>
+  		
+  	</tr>
+  	<tr>
+  	
+  		<td>Users</td>
+  		<td>
+  			{{#users}}
+  				<li style="list-style-type: none;">{{firstname}} {{lastname}}</li>
+  			{{/users}}
+  		</td>
+  		
+  	</tr>
+  	</tbody>
+</table>
+{{/orga}}
+
+{{> /partials/footer }}

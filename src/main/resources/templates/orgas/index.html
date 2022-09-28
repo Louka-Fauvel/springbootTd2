@@ -6,7 +6,7 @@
 </a>
 <a href="/orgas/new" class="ui labeled icon green button"><i class="plus icon"></i>Ajouter une organisation</a>
 
-<table class="ui celled table">
+<table class="ui selectable celled table">
 	<thead>
    		<tr>
     		<th>Nom</th>
@@ -19,18 +19,20 @@
   	<tbody>
   		{{#orgas}}
     	<tr>
-      		<td>{{name}}</td>
-      		<td>{{domain}}</td>
-      		<td>{{aliases}}</td>
-      		<td>
+      		<td class="selectable"><a>{{name}}</a></td>
+      		<td class="selectable"><a>{{domain}}</a></td>
+      		<td class="selectable"><a>{{aliases}}</a></td>
+      		<td class="selectable">
+      			<a>
       			<ul style="list-style-type: none;">
       			{{#users}}
 					<li>{{firstname}} {{lastname}}</li>
       			{{/users}}
       			</ul>
+      			</a>
       		</td>
       		<td>
-      			<a href="/orgas" class="circular ui icon button">
+      			<a href="/orgas/display/{{id}}" class="circular ui icon button">
       				<i class="eye icon"></i>
       			</a>
       			
@@ -64,6 +66,26 @@
   		</tr>
   	</tfoot>
 </table>
+
+{{#details}}
+<div class="ui message" id="details-message">
+	<div class="header">Détails</div>
+	<table class="ui celled table">
+		<thead>
+   			<tr>
+    			<th>Groupes ()</th>
+    			<th>Settings ()</th>
+    			<th>Utilisateurs ()</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+	</table>
+</div>
+{{/details}}
 
 {{#msg}}
 <div class="ui {{type}} icon message" id="delete-message">

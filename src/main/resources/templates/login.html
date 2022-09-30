@@ -1,0 +1,21 @@
+{{> /partials/header }}
+
+<h1>Connexion</h1>
+
+<a href="/" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+
+<form class="ui form" method="post" action="/login">
+	<div class="field">
+    	<input name="username" type="text">
+   	</div>
+   	
+   	<div class="field">
+   		<input name="password" type="password">
+   	</div>
+   	
+    <button class="ui button" type="submit">Connexion</button>
+</form>
+
+{{> /partials/footer }}

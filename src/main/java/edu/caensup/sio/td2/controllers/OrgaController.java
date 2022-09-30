@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import edu.caensup.sio.td2.models.Organization;
 import edu.caensup.sio.td2.models.User;
 import edu.caensup.sio.td2.repositories.IOrganizationDAO;
+import edu.caensup.sio.td2.services.UserService;
 import edu.caensup.sio.td2.ui.UILink;
 import edu.caensup.sio.td2.ui.UIMessage;
 

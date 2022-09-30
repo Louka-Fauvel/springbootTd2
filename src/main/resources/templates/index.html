@@ -1,4 +1,19 @@
 {{> /partials/header }}
+<div class="ui aligned grid">
+	<div class="four column row">
+    	<div class="right floated column">
+    		{{#authUser}}
+    			<p>
+    				{{email}} <a href="/exit" class="ui labeled icon inverted red button"><i class="user icon"></i>Déconnexion</a>
+   				</p>
+    		{{/authUser}}
+    		{{^authUser}}
+    			<a href="/login" class="ui labeled icon inverted violet button"><i class="user icon"></i>Connexion</a>
+   			{{/authUser}}
+   		</div>
+  	</div>
+</div>
+
 
 <h1>SpringBootTd2</h1>
 

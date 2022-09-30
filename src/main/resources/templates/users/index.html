@@ -22,11 +22,15 @@
     	<tr>
       		<td>{{firstname}}</td>
       		<td>{{lastname}}</td>
-      		<td>Engineer</td>
-      		<td>Engineer</td>
+      		<td>{{email}}</td>
+      		<td>{{password}}</td>
       		<td>{{suspended}}</td>
-      		<td>Engineer</td>
-      		<td>Engineer</td>
+      		<td>{{#organization}} {{name}} {{/organization}} {{^organization}} Pas d'organisation {{/organization}}</td>
+      		<td>
+      			{{#groups}}
+					<li style="list-style-type: none;">{{name}}</li>
+      			{{/groups}}
+      		</td>
     	</tr>
     	{{/users}}
   	</tbody>

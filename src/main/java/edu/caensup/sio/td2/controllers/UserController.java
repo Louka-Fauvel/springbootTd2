@@ -2,6 +2,8 @@ package edu.caensup.sio.td2.controllers;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
@@ -10,7 +12,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -19,6 +23,7 @@ import edu.caensup.sio.td2.repositories.IUserDAO;
 import edu.caensup.sio.td2.services.UserService;
 
 @Controller
+@RolesAllowed({"ADMIN", "USER_ADMIN"})
 @RequestMapping("/users")
 public class UserController {
 
@@ -37,12 +42,17 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("/add/{firstname}/{lastname}/{email}/{password}")
-	public RedirectView addUser(@PathVariable String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password) {
+	@GetMapping("/add")
+	public String addUser() {
+		return "/users/form";
+	}
+	
+	@PostMapping("/add")
+	public RedirectView addUser(@ModelAttribute User user) {
 		
-		User u = ((UserService) uService).CreateUser(firstname, lastname, email, password);
+		User u = ((UserService) uService).CreateUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword());
 		userDAO.save(u);
-		return new RedirectView("/users");
+		return new RedirectView("/");
 		
 	}
 	

@@ -2,6 +2,8 @@ package edu.caensup.sio.td2.controllers;
 
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -21,10 +23,12 @@ import edu.caensup.sio.td2.models.Organization;
 import edu.caensup.sio.td2.models.User;
 import edu.caensup.sio.td2.repositories.IOrganizationDAO;
 import edu.caensup.sio.td2.services.UserService;
+import edu.caensup.sio.td2.ui.UIDetailsOrga;
 import edu.caensup.sio.td2.ui.UILink;
 import edu.caensup.sio.td2.ui.UIMessage;
 
 @Controller
+@RolesAllowed({"ADMIN", "ORGA_ADMIN"})
 @RequestMapping("/orgas")
 public class OrgaController {
 	
@@ -32,7 +36,7 @@ public class OrgaController {
 	private IOrganizationDAO orgarepo;
 	
 	@GetMapping({"/index", ""})
-	public String indexAction(ModelMap model, @RequestAttribute(name = "msg", required = false) UIMessage msg) {
+	public String indexAction(ModelMap model, @RequestAttribute(name = "msg", required = false) UIMessage msg, @RequestAttribute(name = "details", required = false) UIDetailsOrga details) {
 		
 		Iterable<Organization> organizations = orgarepo.findAll();
 		model.put("orgas", organizations);
@@ -84,6 +88,19 @@ public class OrgaController {
 		
 		orgarepo.findById(id).ifPresent(orga -> model.put("orga", orga));
 		return "/orgas/display";
+		
+	}
+	
+	@GetMapping("details/{id}")
+	public RedirectView detailsAction(@PathVariable int id, RedirectAttributes attrs) {
+		
+		Optional<Organization> opt = orgarepo.findById(id);
+		
+		if(opt.isPresent()) {
+			attrs.addFlashAttribute("details",
+					new UIDetailsOrga(opt.get().getGroups(), opt.get().getUsers()));
+		}
+		return new RedirectView("/orgas/index");
 		
 	}
 	

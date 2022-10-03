@@ -1,5 +1,6 @@
 package edu.caensup.sio.td2.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
@@ -34,6 +36,8 @@ public class User  implements UserDetails {
 	private String password;
 	
 	private boolean suspended;
+	
+	private String authorities;
 	
 	@ManyToOne(optional = true)
 	private Organization organization;
@@ -99,7 +103,17 @@ public class User  implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		
+		if(authorities == null) {
+			authorities = "";
+		}
+		String[] auths = authorities.split(",");
+        List<SimpleGrantedAuthority> authoritiesObjects = new ArrayList<SimpleGrantedAuthority>();
+        for (String role : auths) {
+            authoritiesObjects.add(new SimpleGrantedAuthority("ROLE_" + role));
+        }
+        return authoritiesObjects;
+        
 	}
 
 	@Override

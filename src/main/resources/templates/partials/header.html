@@ -7,4 +7,21 @@
 </head>
 <body>
     <div class="ui container">
-    
+    <div class="ui aligned grid">
+	<div class="four column row">
+    	<div class="right floated column">
+    		{{#authUser}}
+    			<p>
+    				{{email}} <a href="/exit" class="ui labeled icon inverted red button"><i class="user icon"></i>Déconnexion</a>
+   				</p>
+    		{{/authUser}}
+    		{{^authUser}}
+    			<div class="ui buttons">
+	    			<a href="/login" class="ui labeled icon violet button"><i class="user icon"></i>Connexion</a>
+	    			<a href="/users/add" class="ui labeled icon pink button"><i class="user icon"></i>Inscription</a>
+    			</div>
+    			
+   			{{/authUser}}
+   		</div>
+  	</div>
+	</div>

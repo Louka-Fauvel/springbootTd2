@@ -2,12 +2,15 @@ package edu.caensup.sio.td2.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Organization {
@@ -24,10 +27,11 @@ public class Organization {
 	
 	private String aliases = "";
 	
-	@OneToMany(mappedBy = "organization")
+	@OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<User> users;
 	
-	@OneToMany(mappedBy = "organization")
+	@OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
 	private List<Group> groups;
 
 	public int getId() {

@@ -19,11 +19,11 @@
   	<tbody>
   		{{#orgas}}
     	<tr>
-      		<td class="selectable"><a>{{name}}</a></td>
-      		<td class="selectable"><a>{{domain}}</a></td>
-      		<td class="selectable"><a>{{aliases}}</a></td>
+      		<td class="selectable"><a href="/orgas/details/{{id}}#details-message">{{name}}</a></td>
+      		<td class="selectable"><a href="/orgas/details/{{id}}#details-message">{{domain}}</a></td>
+      		<td class="selectable"><a href="/orgas/details/{{id}}#details-message">{{aliases}}</a></td>
       		<td class="selectable">
-      			<a>
+      			<a href="/orgas/details/{{id}}#details-message">
       			{{#users}}
 					<li style="list-style-type: none;">{{firstname}} {{lastname}}</li>
       			{{/users}}
@@ -71,15 +71,19 @@
 	<table class="ui celled table">
 		<thead>
    			<tr>
-    			<th>Groupes ()</th>
-    			<th>Settings ()</th>
-    			<th>Utilisateurs ()</th>
+    			<th>Groupes ({{groups.size}})</th>
+    			<th>Utilisateurs ({{users.size}})</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
+			<tr>
+				<td>
+					{{#groups}}<li style="list-style-type: none;">{{name}}</li>{{/groups}}
+				</td>
+				<td>
+					{{#users}}<li style="list-style-type: none;">{{email}}</li>{{/users}}
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

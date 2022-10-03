@@ -1,0 +1,35 @@
+{{> /partials/header }}
+
+<h1>Inscription</h1>
+
+<a href="/" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+
+<form class="ui form" method="post" action="/users/add">
+
+  <div class="field">
+    <label>Prénom</label>
+    <input type="text" name="firstname" placeholder="Prénom" required>
+  </div>
+  
+  <div class="field">
+    <label>Nom</label>
+    <input type="text" name="lastname" placeholder="Nom" required>
+  </div>
+  
+  <div class="field">
+    <label>Email</label>
+    <input type="text" name="email" placeholder="Email" required>
+  </div>
+  
+  <div class="field">
+    <label>Mot de passe</label>
+    <input type="text" name="password" placeholder="Mot de passe" required>
+  </div>
+  
+  <button class="ui button" type="submit">Inscrire</button>
+  
+</form>
+
+{{> /partials/footer }}
